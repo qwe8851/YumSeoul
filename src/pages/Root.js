@@ -1,10 +1,11 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
-const RootPage = () => {
+import Navigation from '../components/layout/MainNavigation/Navigation';
+
+function RootPage() {
     return (
         <>
-            <h1>root</h1>
+            <Navigation />
             <main>
                 <Outlet />
             </main>
