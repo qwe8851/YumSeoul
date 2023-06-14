@@ -1,27 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import Styled from 'styled-components'
+import styled from 'styled-components'
 
-const CardDiv = Styled.div`
-    color-scheme: dark;
-    color: black;
-    background-color: var(--color-beige);
+const StyledCard = styled.div`
+    // background-color: var(--color-beige);
+    background-color: white;
     width: ${props => props.width || '30rem'};
     height: auto;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid #E0E3DA;
     box-shadow: 0 2px 6px #b3b5af;
 `;
 
-const Logo = Styled.div`
+const StyledLogo = styled.h1`
     position: absolute;
     top: 0;
     left: 0;
-    padding: 50px;
+    padding: 30px;
     font-size: 1.5rem;
-    font-weight: 500;
     cursor: pointer;
     color: black;
 `;
@@ -29,10 +27,12 @@ const Logo = Styled.div`
 const Card = (props) => {
     return (
         <>
-            <Link to='./'><Logo>LOGO</Logo></Link>
-            <CardDiv>
+            <Link to='./'>
+                <StyledLogo>YumSeoul</StyledLogo>
+            </Link>
+            <StyledCard>
                 {props.children}
-            </CardDiv>
+            </StyledCard>
         </>
     );
 }

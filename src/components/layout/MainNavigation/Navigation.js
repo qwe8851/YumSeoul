@@ -9,7 +9,7 @@ const Navigation = () => {
         <>
             <EventBar className={classes.eventBar} />
             <div className={classes.navigation}>
-                <p><Link to='/'>LOGO</Link></p> {/*TODO: 로고이미지 변경*/}
+                <p><Link to='/'>YumSeoul</Link></p>
                 <div>
                     <NavLink
                         to='/auth/signin' className={({ isActive }) =>
