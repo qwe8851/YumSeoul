@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { authService } from '../../../utils/firebaseAuth';
-
 import useInput from '../../../hooks/use-input';
+
+import { authService } from '../../../utils/firebaseAuth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { isEmail, isPassword } from '../../../pages/Auth';
 
 import Card from '../../common/Card';
-import Input from '../../common/Input';
 import Form from '../../common/Form';
+import Input from '../../common/Input';
 import Button from '../../common/Button';
 
 const Signin = () => {
@@ -92,7 +92,7 @@ const Signin = () => {
                         onBlur={pwBlurHandler}
                         value={enteredPw}
                         placeholder='password'
-                        autoComplete='on'
+                        autoComplete='off'
                     />
                     {pwInputHasError && <p className='error-text'>비밀번호가 올바르지 않습니다.</p>}
                 </div>
