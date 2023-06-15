@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
-import useInput from '../../../hooks/use-input';
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../../../store/authSlice';
 
 import { authService } from '../../../utils/firebaseAuth';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { isEmail, isPassword } from '../../../pages/Auth';
+
+import useInput from '../../../hooks/use-input';
 
 import Card from '../../common/Card';
 import Form from '../../common/Form';
@@ -14,6 +16,7 @@ import Button from '../../common/Button';
 
 const Signin = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
@@ -55,8 +58,10 @@ const Signin = () => {
 
         try {
             const result = await signInWithEmailAndPassword(authService, enteredEmail, enteredPw);
-            const idToken = result.user.idToken;
-            window.localStorage.setItem("access_token", idToken);
+            const idToken = result.user.accessToken;
+            // window.localStorage.setItem("access_token", idToken);
+            console.log(idToken);
+            dispatch(setAuthToken(idToken));
 
             resetPwInput();
             resetEmailInput();

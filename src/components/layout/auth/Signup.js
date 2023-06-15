@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import useInput from '../../../hooks/use-input';
-
 import { authService } from '../../../utils/firebaseAuth';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { isEmail, isPassword } from '../../../pages/Auth';
+
+import useInput from '../../../hooks/use-input';
 
 import Card from '../../common/Card';
 import Form from '../../common/Form';
@@ -64,7 +64,7 @@ const Signup = () => {
             navigate('/auth/signin');
         } catch (error) {
             setIsSubmitSuccess(true);
-            setErrorMessage("이메일과 패스워드를 확인해주세요.");
+            setErrorMessage("이미 가입된 회원입니다.");
         }
     };
 
