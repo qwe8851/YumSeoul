@@ -1,19 +1,22 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setAuthToken } from '../../../store/authSlice';
 
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { authService } from '../../../utils/firebaseAuth';
-
-import useInput from '../../../hooks/use-input';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { isEmail, isPassword } from '../../../pages/Auth';
 
+import useInput from '../../../hooks/use-input';
+
 import Card from '../../common/Card';
-import Input from '../../common/Input';
 import Form from '../../common/Form';
+import Input from '../../common/Input';
 import Button from '../../common/Button';
 
 const Signin = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
     const [errorMessage, setErrorMessage] = useState(false);
@@ -55,8 +58,10 @@ const Signin = () => {
 
         try {
             const result = await signInWithEmailAndPassword(authService, enteredEmail, enteredPw);
-            const idToken = result.user.idToken;
-            window.localStorage.setItem("access_token", idToken);
+            const idToken = result.user.accessToken;
+            // window.localStorage.setItem("access_token", idToken);
+            console.log(idToken);
+            dispatch(setAuthToken(idToken));
 
             resetPwInput();
             resetEmailInput();
@@ -92,7 +97,7 @@ const Signin = () => {
                         onBlur={pwBlurHandler}
                         value={enteredPw}
                         placeholder='password'
-                        autoComplete='on'
+                        autoComplete='off'
                     />
                     {pwInputHasError && <p className='error-text'>비밀번호가 올바르지 않습니다.</p>}
                 </div>
