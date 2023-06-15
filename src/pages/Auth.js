@@ -13,13 +13,13 @@ const AuthDiv = Styled.div`
     background-color: var(--color-light-gray);
 `;
 
-const isNotEmpty = (value) => value.trim() === '';
-const isNotEmail = (value) => {
+const isNotEmpty = (value) => value.trim() !== '';
+const isEmail = (value) => {
     const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return isNotEmpty(value) && !emailRegEx.test(value);
+    return isNotEmpty(value) && emailRegEx.test(value);
 }
-const isNotPassword = (value) => {
-    return isNotEmpty(value) && !value.trim().length >= 8;
+const isPassword = (value) => {
+    return value.trim().length >= 8;
 }
 
 const AuthPage = () => {
@@ -31,4 +31,4 @@ const AuthPage = () => {
 }
 
 export default AuthPage;
-export { isNotEmail, isNotPassword };
+export { isNotEmpty, isEmail, isPassword };

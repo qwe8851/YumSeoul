@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { authService } from '../../../utils/firebaseAuth';
 
 import useInput from '../../../hooks/use-input';
-import { isNotEmail, isNotPassword } from '../../../pages/Auth';
+import { isEmail, isPassword } from '../../../pages/Auth';
 
 import Card from '../../common/Card';
 import Input from '../../common/Input';
@@ -25,7 +25,7 @@ const Signin = () => {
         valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
         reset: resetEmailInput,
-    } = useInput((value) => !isNotEmail(value));
+    } = useInput((value) => isEmail(value));
 
     const {
         value: enteredPw,
@@ -34,7 +34,7 @@ const Signin = () => {
         valueChangeHandler: pwChangeHandler,
         inputBlurHandler: pwBlurHandler,
         reset: resetPwInput,
-    } = useInput((value) => !isNotPassword(value));
+    } = useInput((value) => isPassword(value));
 
     const formIsValid = enteredPwIsValid && enteredEmailIsValid;
 
