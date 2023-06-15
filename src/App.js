@@ -6,6 +6,7 @@ import HomePage from './pages/Home';
 import AuthPage from './pages/Auth';
 import Signup from './components/layout/auth/Signup';
 import Signin from './components/layout/auth/Signin';
+import ResetPassword from './components/layout/auth/ResetPassword';
 
 import './App.css';
 
@@ -26,6 +27,7 @@ function App() {
       children: [
         { path: 'signup', element: <Signup /> },
         { path: 'signin', element: <Signin /> },
+        { path: 'resetpassword', element: <ResetPassword /> },
       ]
     },
   ]);

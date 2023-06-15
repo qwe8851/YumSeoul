@@ -58,10 +58,7 @@ const Signin = () => {
 
         try {
             const result = await signInWithEmailAndPassword(authService, enteredEmail, enteredPw);
-            const idToken = result.user.accessToken;
-            // window.localStorage.setItem("access_token", idToken);
-            console.log(idToken);
-            dispatch(setAuthToken(idToken));
+            dispatch(setAuthToken(result.user.accessToken));
 
             resetPwInput();
             resetEmailInput();
@@ -103,9 +100,8 @@ const Signin = () => {
                 </div>
                 {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                 <Button primary='true' disabled={!formIsValid}>로그인</Button>
-                <Link to='../signup'>
-                    <Button>회원가입</Button>
-                </Link>
+                <Link to='../resetpassword'><Button>비밀번호 재설정</Button></Link>
+                <Link to='../signup'><Button>회원가입</Button></Link>
             </Form>
         </Card >
     );

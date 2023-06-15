@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { authService } from '../../../utils/firebaseAuth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { isEmail, isPassword } from '../../../pages/Auth';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { isEmail } from '../../../pages/Auth';
 
 import useInput from '../../../hooks/use-input';
 
@@ -24,55 +24,33 @@ const Signup = () => {
         hasError: emailInputHasError,
         valueChangeHandler: emailChangeHandler,
         inputBlurHandler: emailBlurHandler,
-        reset: resetEmailInput,
     } = useInput((value) => isEmail(value));
-
-    const {
-        value: enteredPw,
-        isValid: enteredPwIsValid,
-        hasError: pwInputHasError,
-        valueChangeHandler: pwChangeHandler,
-        inputBlurHandler: pwBlurHandler,
-        reset: resetPwInput,
-    } = useInput((value) => isPassword(value));
-
-    const formIsValid = enteredPwIsValid && enteredEmailIsValid;
 
     const emailInputChangeHandler = (event) => {
         emailChangeHandler(event);
         setIsSubmitSuccess(false);
     }
 
-    const pwInputChangeHandler = (event) => {
-        pwChangeHandler(event);
-        setIsSubmitSuccess(false);
-    }
-
     const formSubmissionHandler = async (event) => {
         event.preventDefault();
 
-        if (!enteredEmailIsValid || !enteredPwIsValid) return;
+        if (!enteredEmailIsValid) return;
 
         try {
-            await createUserWithEmailAndPassword(authService, enteredEmail, enteredPw);
-            alert('회원가입이 성공적으로 완료되었습니다!')
-
-            resetPwInput();
-            resetEmailInput();
-
-            navigate('/auth/signin');
+            await sendPasswordResetEmail(authService, enteredEmail);
+            alert(`${enteredEmail}으로 비밀번호 재설정 메일이 전송되었습니다.`);
+            navigate('../signin');
         } catch (error) {
             setIsSubmitSuccess(true);
-            setErrorMessage("이미 가입된 회원입니다.");
+            setErrorMessage("가입되지 않은 회원입니다.");
         }
     };
 
     const emailInputClasses = emailInputHasError ? 'invalid' : undefined;
-    const pwInputClasses = pwInputHasError ? 'invalid' : undefined;
 
     return (
         <Card>
-            <h1>Join us!</h1>
+            <h1>Reset password</h1>
             <Form onSubmit={formSubmissionHandler}>
                 <div className={emailInputClasses}>
                     <Input
@@ -84,19 +62,8 @@ const Signup = () => {
                     />
                     {emailInputHasError && <p className='error-text'>이메일이 올바르지 않습니다.</p>}
                 </div>
-                <div className={pwInputClasses}>
-                    <Input
-                        type='password'
-                        onChange={pwInputChangeHandler}
-                        onBlur={pwBlurHandler}
-                        value={enteredPw}
-                        placeholder='password'
-                        autoComplete='off'
-                    />
-                    {pwInputHasError && <p className='error-text'>비밀번호가 올바르지 않습니다.</p>}
-                </div>
                 {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
-                <Button primary='true' disabled={!formIsValid}>회원가입</Button>
+                <Button primary='true' disabled={!enteredEmailIsValid}>비밀번호 재설정</Button>
             </Form>
         </Card >
     );
