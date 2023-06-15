@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
-    // background-color: var(--color-beige);
     background-color: white;
     width: ${props => props.width || '30rem'};
     height: auto;
@@ -18,7 +17,7 @@ const StyledLogo = styled.h1`
     position: absolute;
     top: 0;
     left: 0;
-    padding: 30px;
+    padding: 40px;
     font-size: 1.5rem;
     cursor: pointer;
     color: black;
@@ -27,10 +26,10 @@ const StyledLogo = styled.h1`
 const Card = (props) => {
     return (
         <>
-            <Link to='./'>
+            <Link to='/'>
                 <StyledLogo>YumSeoul</StyledLogo>
             </Link>
-            <StyledCard>
+            <StyledCard width={props.width}>
                 {props.children}
             </StyledCard>
         </>

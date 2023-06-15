@@ -6,20 +6,38 @@ const StyledButton = styled.button`
     width: ${props => props.width || '100%'};
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid ${props => props.isSubmit ? 'var(--color-blue-500)' : 'var(--color-gray-500)'};
-    background-color: ${props => props.isSubmit ? 'var(--color-blue-600);' : 'transparent'};
-    color: ${props => props.isSubmit ? 'white' : 'black'};
-    font-weight : ${props => props.isSubmit ? 'bold' : 'normal'};
+    border: 1px solid var(--color-gray-500);
+    background-color: transparent;
+    color: black;
+    font-weight: normal;
 
-    &:hover {
-        background-color:  ${props => props.isSubmit ? 'var(--color-blue-700)' : 'var(--color-gray-100)'};
+    ${props => props.primary && `
+        border-color: var(--color-blue-500);
+        background-color: var(--color-blue-700);
+        color: white;
+        font-weight: bold;
+    `};
+
+    &:hover,
+    &:active {
+        background-color: ${props => props.primary ? 'var(--color-blue-800)' : 'var(--color-gray-100)'};
     }
+    
+    &:disabled,
+    &:disabled:hover,
+    &:disabled:active {
+    background-color: #ccc;
+    color: var(--color-gray-900);
+    border-color: #ccc;
+    cursor: not-allowed;
+}
 `;
+
 
 const Button = (props) => {
 
     return (
-        <StyledButton isSubmit={props.isSubmit}>
+        <StyledButton {...props}>
             {props.children}
         </StyledButton>
     );
