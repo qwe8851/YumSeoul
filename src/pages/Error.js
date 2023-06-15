@@ -4,10 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function ErrorPage() {
     const navigate = useNavigate();
 
-    function navigateHandler() {
-        navigate('/');
-    }
-
     return (
         <main>
             <h1>An error occurred!</h1>
