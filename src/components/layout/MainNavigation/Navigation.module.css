@@ -12,7 +12,7 @@
 .navigation{
     height: 50px;
     width: 100%;
-    background-color: var(--color-lightgray);
+    background-color: var(--color-light-gray);
     padding: 13px;
     display: flex;
     justify-content: space-between;

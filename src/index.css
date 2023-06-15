@@ -43,7 +43,7 @@
   --color-blue-800: #2b6ba8;
   --color-blue-900: #1a4064;
   --color-blue-dark: #0f263c;
-  
+
   --color-green-200: #eaf2f9;
 
   --color-red-100: #ffefed;
@@ -55,11 +55,11 @@
   --color-red-700: #dc1400;
   --color-red-800: #a90f00;
   --color-red-900: #650900;
-  
+
   --color-purple: #A593E0;
-  --color-lightgray: #E0E3DA;
+  --color-light-gray: #E0E3DA;
   --color-beige: #FFFFF3;
-  --color-darkblue: #566270;
+  --color-dark-blue: #566270;
 }
 
 html,
@@ -73,7 +73,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-#root{
+#root {
   height: 100%;
 }
 
@@ -90,4 +90,24 @@ ul {
 main {
   margin: 2rem auto;
   text-align: center;
+}
+
+input {
+  outline: none;
+}
+
+.invalid input{
+  border: 1px solid var(--color-red-300);
+  background-color: var(--color-red-100);
+}
+
+.invalid input:focus,
+.invalid input:active{
+  border: 1px solid var(--color-red-400);
+}
+
+.error-text {
+  color: var(--color-red-600);
+  margin: 0;
+  font-size: small;
 }
