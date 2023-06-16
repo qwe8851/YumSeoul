@@ -7,6 +7,7 @@ import { authService } from './utils/firebaseAuth';
 import store from './store/store';
 
 import './index.css';
+import './assets/styles/Fonts/Fonts.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

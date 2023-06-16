@@ -1,0 +1,13 @@
+@font-face{
+    font-family: "hanna Pro";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./AnyConv.com__BMHANNAProOTF.woff") format("woff");
+}
+
+@font-face{
+    font-family: "hanna Air";
+    font-style: normal;
+    font-weight: normal;
+    src: url("./AnyConv.com__BMHANNAAir_otf.woff") format("woff");
+}
