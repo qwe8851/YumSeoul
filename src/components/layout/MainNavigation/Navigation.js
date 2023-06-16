@@ -36,8 +36,10 @@ const Navigation = () => {
         <>
             <EventBar className={classes.eventBar} />
             <div className={classes.navigation}>
-                <Link to='/' className={classes.logo}>YumSeoul</Link>
                 <div>
+                    <Link to='/' className={classes.logo}>YumSeoul</Link>
+                </div>
+                <div className={classes.flexbox}>
                     {navigationUnit}
                 </div>
             </div>

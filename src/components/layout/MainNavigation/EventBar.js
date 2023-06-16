@@ -1,8 +1,25 @@
+// import { useEffect, useState } from "react";
+import Marquee from "react-fast-marquee";
+
 const EventBar = (props) => {
+    const event = <span>회원 가입 시 YumSeoul에서 <font color="#8eff45">20%</font>할인 쿠폰을 드려요! <font color="gray">~ 06.29</font> THURSDAY 🌞</span>
+    // const [event, setEvent] = useState('');
+
+    // useEffect(() => {
+    //     fetchEvent();
+    // }, []);
+
+    // const fetchEvent = async () => {
+    //     const fetchResult = await fetch('https://yum-seoul-default-rtdb.firebaseio.com/event.json');
+    //     const result = await fetchResult.json();
+
+    //     setEvent(result.event);
+    // }
+
     return (
-        <div className={props.className}>
-            EVENTBAR EVENTBAR <font color="#3fff18">EVENTBAR</font> EVENTBAR EVENTBAR EVENTBAR EVENTBAR EVENTBAR 
-        </div>
+        <Marquee className={props.className} autoFill={true}>
+            {event}
+        </Marquee>
     );
 }
 

@@ -1,12 +1,16 @@
 /* eventBar */
 .eventBar {
     width: 100%;
-    /* TODO: 나중에 바꿔야함*/
     height: 26px;
     background-color: var(--color-gray-900);
     color: white;
+    display: flex;
     overflow: hidden;
     word-break: break-all;
+}
+
+.eventBar span {
+    margin: 0 5rem;
 }
 
 /* navigation */
@@ -14,22 +18,29 @@
     height: 50px;
     width: 100%;
     background-color: var(--color-light-gray);
-    padding: 13px;
     display: flex;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .navigation .logo,
 .navigation .logo:hover {
     margin: 0;
-    height: 100%;
     font-weight: 700;
     text-decoration: none;
+    font-size: 75px;
+    color: white;
+    position: relative;
+    top: 8px;
+    left: -7px;
+    letter-spacing: -11px;
 }
 
-.navigation div {
+.navigation .flexbox {
     display: flex;
     gap: 10px;
+    align-items: center;
+    margin: 0 15px;
 }
 
 .navigation a {
