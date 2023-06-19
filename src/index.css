@@ -60,6 +60,10 @@
   --color-light-gray: #E0E3DA;
   --color-beige: #FFFFF3;
   --color-dark-blue: #566270;
+
+  --height-header-event: 26px;
+  --height-header-nav: 50px;
+  --height-header: 76px;
 }
 
 html,
@@ -87,10 +91,10 @@ ul {
   margin: 0;
 }
 
-main {
+/* main {
   margin: 2rem auto;
   text-align: center;
-}
+} */
 
 input {
   outline: none;

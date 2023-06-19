@@ -19,15 +19,15 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         { index: true, element: <HomePage /> },
-      ]
-    },
-    {
-      path: '/auth',
-      element: <AuthPage />,
-      children: [
-        { path: 'signup', element: <Signup /> },
-        { path: 'signin', element: <Signin /> },
-        { path: 'resetpassword', element: <ResetPassword /> },
+        {
+          path: '/auth',
+          element: <AuthPage />,
+          children: [
+            { path: 'signup', element: <Signup /> },
+            { path: 'signin', element: <Signin /> },
+            { path: 'resetpassword', element: <ResetPassword /> },
+          ]
+        },
       ]
     },
   ]);

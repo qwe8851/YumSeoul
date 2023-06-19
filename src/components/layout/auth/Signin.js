@@ -96,7 +96,7 @@ const Signin = () => {
                         placeholder='password'
                         autoComplete='off'
                     />
-                    {pwInputHasError && <p className='error-text'>비밀번호가 올바르지 않습니다.</p>}
+                    {pwInputHasError && <p className='error-text'>비밀번호는 8자 이상 입력해 주세요.</p>}
                 </div>
                 {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                 <Button primary='true' disabled={!formIsValid}>로그인</Button>

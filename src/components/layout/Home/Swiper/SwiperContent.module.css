@@ -1,0 +1,20 @@
+/* SwiperContent */
+.swiper-container-main {
+    height: calc(100vh - var(--height-header-event));
+}
+
+.hidden {
+    overflow: hidden;
+}
+
+.swiper-inner {
+    /* width는 서버에서 가져온 이미지 데이터의 길이로 동적 바인딩 */
+    height: 100%;
+    margin-top: var(--height-header-event);
+    display: flex;
+    transition: transform 2s;
+}
+
+.swiper-inner img {
+    width: 100%;
+}

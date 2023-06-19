@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom';
+import SwiperContent from '../components/layout/Home/Swiper/SwiperContent';
+import Navigation from '../components/layout/Navigation/Navigation';
 
 const HomePage = () => {
     return (
         <>
-            <p><Link to="/auth/signin">로그인</Link>하러 가기</p>
-            <p><Link to="/auth/signup">회원가입</Link>하러 가기</p>
+            <header>
+                <Navigation />
+            </header>
+            <main>
+                <SwiperContent />
+                {/* TODO: 여기에 이것저것 콘텐츠 추가  */}
+            </main>
         </>
     );
 }
