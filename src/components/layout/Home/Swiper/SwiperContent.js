@@ -59,21 +59,21 @@ const SwiperContent = () => {
     }, [imageData, swiperCurrentPosition]);
 
     return (
-        <div className={classes.hidden}>
-            <div className={classes['swiper-container-main']}>
-                <div ref={swiperRef} className={classes['swiper-inner']}>
+        <section className={classes['swiper-container']}>
+            <div className={classes['swiper-wrap']}>
+                <div ref={swiperRef} className={classes['swiper_list']}>
                     {imageData &&
                         imageData.map((item) => (
                             <SlideItem
                                 key={item.id}
-                                imageUrl={item.imageUrl}
+                                imageurl={item.imageUrl}
                                 title={item.title}
                                 description={item.description}
                             />
                         ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

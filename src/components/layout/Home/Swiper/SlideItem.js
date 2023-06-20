@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledDiv = styled.div`
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), 
         rgba(0, 0, 0, 0.3)), 
-        url(${({ imageUrl }) => imageUrl || 'none'});
+        url(${({ imageurl }) => imageurl || 'none'});
     background-size: cover;
     background-position: center;
     width: 100vw;
@@ -20,7 +20,7 @@ const StyledDiv = styled.div`
     & h1 {
         width: 100%;
         font-family: hanna Pro;
-        font-size: 50px;
+        font-size: 3.125rem;
         line-height: 50px;
         margin: 0;
     } 
@@ -28,14 +28,15 @@ const StyledDiv = styled.div`
     & p {
         width: 100%;
         font-family: hanna Air;
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 }`;
 
-const SlideItem = ({ imageUrl, title, description }) => {
+const SlideItem = ({ imageurl, title, description }) => {
+    // const imageUrlStr = imageUrl.toString();
 
     return (
-        <StyledDiv imageUrl={imageUrl}>
+        <StyledDiv imageurl={imageurl}>
             <h1>{title}</h1>
             <p>{description}</p>
         </StyledDiv>

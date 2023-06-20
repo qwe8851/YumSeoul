@@ -75,6 +75,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
 }
 
 #root {
@@ -88,25 +89,40 @@ code {
 
 ul {
   padding: 0;
-  margin: 0;
 }
 
-/* main {
-  margin: 2rem auto;
+main {
   text-align: center;
-} */
+  display: flex;
+  flex-direction: column;
+  gap: 10rem
+}
+
+section {
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+}
+
+section .main-title h1 {
+  font-family: 'hanna Pro';
+}
+
+section .main-title p {
+  font-family: 'hanna Air';
+}
 
 input {
   outline: none;
 }
 
-.invalid input{
+.invalid input {
   border: 1px solid var(--color-red-300);
   background-color: var(--color-red-100);
 }
 
 .invalid input:focus,
-.invalid input:active{
+.invalid input:active {
   border: 1px solid var(--color-red-400);
 }
 

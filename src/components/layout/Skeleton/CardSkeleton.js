@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import SkeletonItem from './components/SkeletonItem';
 import { Layouts as S } from 'components/common/PostCard/Layouts';
 
-const PostCardSkeleton = (props) => {
+const PostCardSkeleton = () => {
   return (
     <S.Wrapper>
       {new Array(6).fill('').map((_, i) => (

@@ -6,7 +6,6 @@
     color: white;
     position: fixed;
     overflow: hidden;
-    word-break: break-all;
 }
 
 .eventBar span {
@@ -17,7 +16,8 @@
 .navigation {
     height: var(--height-header-nav);
     width: 100%;
-    background-color: #e0e3da66;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: saturate(180%) blur(20px);
     display: flex;
     justify-content: space-between;
     overflow: hidden;
