@@ -45,7 +45,17 @@
   --color-blue-dark: #0f263c;
 
   --color-green-200: #eaf2f9;
-
+  
+  --color-orange-100: #fff4ea;
+  --color-orange-200: #ffead9;
+  --color-orange-300: #fed8b8;
+  --color-orange-400: #fec596;
+  --color-orange-500: #fdb275;
+  --color-orange-600: #fda053;
+  --color-orange-700: #fc8d32;
+  --color-orange-800: #e76a03;
+  --color-orange-900: #d66203;
+  
   --color-red-100: #ffefed;
   --color-red-200: #ffdfdc;
   --color-red-300: #ffc0ba;
@@ -95,7 +105,7 @@ main {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 10rem
+  gap: 15rem
 }
 
 section {
@@ -106,6 +116,7 @@ section {
 
 section .main-title h1 {
   font-family: 'hanna Pro';
+  color: var(--color-blue-dark);
 }
 
 section .main-title p {

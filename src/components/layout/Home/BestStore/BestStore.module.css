@@ -17,14 +17,12 @@
     flex: 1;
 }
 
-.flex-item > div { 
-    width: 15rem;
-    padding: 1rem;
-    background-color: var(--color-blue-100);
-    border: 1px solid var(--color-blue-200);
-    border-radius: 1rem;
-    box-shadow: 16px 10px 20px var(--color-blue-200);
+.flex-item h1 {
+    font-family: hanna Pro;
 }
+
+/* .flex-item > div { 
+} */
 
 /* 큰 화면일때는 ranking 1을 중앙으로 만들기 위해 order를 2로 바꿈 */
 .flex-item:nth-child(1) { 
@@ -48,7 +46,8 @@
 .flex-item .store-ranking{
     font-family: hanna Pro;
     font-size: 3rem;
-    color: var(--color-blue-600);
+    /* color: var(--color-orange-100); */
+    /* text-shadow: 2px 1px var(--color-orange-300); */
 }
 
 @media(max-width: 500px) {

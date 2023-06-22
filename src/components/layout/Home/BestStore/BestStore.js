@@ -1,6 +1,27 @@
+// TODO: top3매장 바로가기 버튼 생성
+
 import React, { useEffect, useState } from 'react';
 
 import classes from './BestStore.module.css';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+    width: 15rem;
+    height: 350px;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)), url(${({ image }) => image || 'none'});
+`;
 
 const BestStore = () => {
     const [top3Stores, setTop3Stores] = useState([]);
@@ -25,7 +46,8 @@ const BestStore = () => {
                     loadedStore.push({
                         id: key,
                         store: data[key].store,
-                        description: data[key].description,
+                        store_image: data[key].store_image,
+                        store_description: data[key].store_description,
                         review: review,
                     });
                 }
@@ -47,11 +69,11 @@ const BestStore = () => {
         <div className={classes['flex-box']}>
             {top3Stores && top3Stores.map((item, idx) => (
                 <div key={item.id} className={classes['flex-item']}>
-                    <div>
-                        <h1 className={classes['store-ranking']}>{idx + 1}</h1>
+                    <StyledDiv image={item.store_image} >   {/* TODO: 상세페이지로 이동 구현*/}
+                        <h1 className={classes['store-ranking']} style={{margin: 0}}>{idx + 1}</h1>
                         <h1>{item.store}</h1>
-                        <p>{item.description}</p>
-                    </div>
+                        <p>{item.store_description}</p>
+                    </StyledDiv>
                 </div>
             ))}
         </div>;

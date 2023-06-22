@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { authService } from '../../../utils/firebaseAuth';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -97,6 +97,7 @@ const Signup = () => {
                 </div>
                 {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                 <Button primary='true' disabled={!formIsValid}>회원가입</Button>
+                <Link to='../signin'><Button>로그인하러 가기</Button></Link>
             </Form>
         </Card >
     );
