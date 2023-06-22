@@ -1,7 +1,4 @@
-.best-store {
-    max-width: 1000px;
-}
-
+/* best-store */
 .best-store>div:nth-child(2) {
     width: fit-content;
     margin: 4rem auto;
@@ -21,11 +18,8 @@
     font-family: hanna Pro;
 }
 
-/* .flex-item > div { 
-} */
-
 /* 큰 화면일때는 ranking 1을 중앙으로 만들기 위해 order를 2로 바꿈 */
-.flex-item:nth-child(1) { 
+.flex-item:nth-child(1) {
     order: 2;
 }
 
@@ -38,16 +32,14 @@
 }
 
 .flex-item:nth-child(2),
-.flex-item:nth-child(3) { 
+.flex-item:nth-child(3) {
     position: relative;
     top: 5rem;
 }
 
-.flex-item .store-ranking{
+.flex-item .store-ranking {
     font-family: hanna Pro;
     font-size: 3rem;
-    /* color: var(--color-orange-100); */
-    /* text-shadow: 2px 1px var(--color-orange-300); */
 }
 
 @media(max-width: 500px) {
@@ -56,17 +48,16 @@
         gap: 2rem;
     }
 
-    .flex-item{
+    .flex-item {
         order: 0 !important;
         top: 0 !important;
     }
 
-        .flex-item > div {
-            width: 90%;
-            margin: auto;
-        }
+    .flex-item>div {
+        width: 90%;
+        margin: auto;
+    }
 }
-
 
 @media(max-width: 800px) {
     .flex-box {

@@ -2,23 +2,32 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootPage from './pages/Root';
 import ErrorPage from './pages/Error';
-import HomePage from './pages/Home';
+import HomePage, { loader as storesLoader } from './pages/Home';
+import MainPage from './pages/Main';
 import AuthPage from './pages/Auth';
 import Signup from './components/layout/auth/Signup';
 import Signin from './components/layout/auth/Signin';
 import ResetPassword from './components/layout/auth/ResetPassword';
+import StoreMain from './components/layout/store/StoreMain';
+import StoreDetail from './components/layout/store/StoreDetail';
 
 import './App.css';
 
 function App() {
-
   const router = createBrowserRouter([
     {
       path: '/',
       element: <RootPage />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <HomePage /> },
+        { path: '/', 
+          element: <HomePage />,
+          children: [
+            { index: true, element: <MainPage /> },
+            { path: 'store', element: <StoreMain /> },
+            { path: 'store/:storeId', element: <StoreDetail /> },
+          ], loader: storesLoader
+        },
         {
           path: '/auth',
           element: <AuthPage />,

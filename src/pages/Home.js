@@ -1,35 +1,35 @@
+import { Outlet, json, useLoaderData } from 'react-router-dom';
+
+import { useDispatch } from 'react-redux';
+import { setStoresData } from '../store/storeSlice';
+
 import Navigation from '../components/layout/Navigation/Navigation';
-import SwiperContent from '../components/layout/Home/Swiper/SwiperContent';
-import YumSeoulSummary from '../components/layout/Home/YumSeoulSummary';
-import BestStore from '../components/layout/Home/BestStore/BestStore';
 import Footer from '../components/layout/Home/Footer/Footer';
 
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const StyledHeader = styled.header`
     position: fixed;
-    // height: var(--height-header);
+    height: var(--height-header);
     z-index: 99;
 `;
 
-// const StyledButton = styled.button`
-//     width: 100px;
-//     height: 50px;
-//     display: flex;
-// `;
-
 const HomePage = () => {
+    const loadedStore = useLoaderData(); 
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(setStoresData(loadedStore || []));
+    }, [dispatch, loadedStore]);
+    
     return (
         <>
             <StyledHeader>
-                <Navigation />
+                <Navigation/>
             </StyledHeader>
             <main>
-                <SwiperContent />
-                <YumSeoulSummary />
-                <BestStore />
-                {/* TODO: 여기에 이것저것 콘텐츠 추가  */}
-                {/* <StyledButton/> */}
+                <Outlet />
             </main>
             <footer>
                 <Footer />
@@ -39,3 +39,33 @@ const HomePage = () => {
 }
 
 export default HomePage;
+
+export const loader = async () => {
+    const response = await fetch('https://yum-seoul-default-rtdb.firebaseio.com/store.json');
+    
+    if (!response.ok) {
+        return json(
+            { message: 'Failed to get data from the server!' },
+            { status: 500 }
+        );
+    } else {
+        const data = await response.json();
+
+        // 데이터 포맷
+        const loadedStore = [];
+        for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+                const review = Array.isArray(data[key].review) ? data[key].review.length : 0;
+                loadedStore.push({
+                    id: key,
+                    store: data[key].store,
+                    store_image: data[key].store_image,
+                    store_description: data[key].store_description,
+                    review: review,
+                });
+            }
+        }
+
+        return loadedStore;
+    }
+}

@@ -16,7 +16,7 @@
 .navigation {
     height: var(--height-header-nav);
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgb(128 128 128 / 30%);
     backdrop-filter: saturate(180%) blur(20px);
     display: flex;
     justify-content: space-between;
@@ -57,5 +57,5 @@
 .navigation div:nth-child(2) a:hover,
 .navigation div:nth-child(2) a.action {
     text-decoration: underline;
-    text-shadow: 4px 4px 4px var(--color-gray-600);
+    text-shadow: 4px 4px 4px var(--color-gray-400);
 }

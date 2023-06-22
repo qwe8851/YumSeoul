@@ -66,7 +66,8 @@
   --color-red-800: #a90f00;
   --color-red-900: #650900;
 
-  --color-purple: #A593E0;
+  --color-purple-100: #efeaff;
+  --color-purple-200: #A593E0;
   --color-light-gray: #E0E3DA;
   --color-beige: #FFFFF3;
   --color-dark-blue: #566270;
@@ -105,7 +106,7 @@ main {
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 15rem
+  /* gap: 15rem */
 }
 
 section {
