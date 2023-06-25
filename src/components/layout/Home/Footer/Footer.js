@@ -1,20 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import classes from './Footer.module.css';
 
 const Footer = () => {
     const [rotate, setRotate] = useState(0);
     const [scale, setScale] = useState(0);
+    const selectRef = useRef(null);
 
     const toggleSelectList = () => {
         setRotate(prev => prev === 0 ? -180 : 0);
         setScale(prev => prev === 0 ? 1 : 0);
     }
 
+    // selectRef가 아닌 다른 부분을 클릭했을때 ul태그 닫기
+    useEffect(() => {
+        const clickOutsideHandler = (event) => {
+            if (scale === 1 && selectRef.current && !selectRef.current.contains(event.target)) {
+                setRotate(0);
+                setScale(0);
+            }
+        }
+
+        document.addEventListener('click', clickOutsideHandler);
+
+        return () => {  // cleanup function 
+            document.removeEventListener('click', clickOutsideHandler);
+        }
+    }, [scale]);
+
     return (
         <div className={classes['footer-inner']}>
             <div className={classes['flex-box']}>
-                <div className={classes['footer-link-select']}>
+                <div ref={selectRef} className={classes['footer-link-select']}>
                     <button type="button" onClick={toggleSelectList}>
                         <span>관련 사이트</span>
                         <span className={classes.down} style={{ transform: `rotate(${rotate}deg)` }}>
@@ -40,8 +57,7 @@ const Footer = () => {
                     <p>사업자등록번호 : 000-00-00000 | 대표 : 얌서울 | 주소: 서울시 노원구 상계동 | 이메일 : dgh07027@naver.com</p>
                 </div>
             </div>
-            <p className={classes['footer-copyright']}>Copyright © Seunghee Song. All rights reserved.</p>
-        </div >
+        </div>
     );
 }
 
