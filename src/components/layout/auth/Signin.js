@@ -9,6 +9,7 @@ import { isEmail, isPassword } from '../../../pages/Auth';
 
 import useInput from '../../../hooks/use-input';
 
+import Logo from '../../common/Logo';
 import Card from '../../common/Card';
 import Form from '../../common/Form';
 import Input from '../../common/Input';
@@ -75,6 +76,7 @@ const Signin = () => {
 
     return (
         <Card>
+            <Logo />
             <h1>Login</h1>
             <Form onSubmit={formSubmissionHandler}>
                 <div className={emailInputClasses}>

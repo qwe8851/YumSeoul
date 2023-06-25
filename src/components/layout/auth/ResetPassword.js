@@ -7,6 +7,7 @@ import { isEmail } from '../../../pages/Auth';
 
 import useInput from '../../../hooks/use-input';
 
+import Logo from '../../common/Logo';
 import Card from '../../common/Card';
 import Form from '../../common/Form';
 import Input from '../../common/Input';
@@ -49,23 +50,26 @@ const Signup = () => {
     const emailInputClasses = emailInputHasError ? 'invalid' : undefined;
 
     return (
-        <Card>
-            <h1>Reset password</h1>
-            <Form onSubmit={formSubmissionHandler}>
-                <div className={emailInputClasses}>
-                    <Input
-                        type='email'
-                        onChange={emailInputChangeHandler}
-                        onBlur={emailBlurHandler}
-                        value={enteredEmail}
-                        placeholder='email'
-                    />
-                    {emailInputHasError && <p className='error-text'>이메일이 올바르지 않습니다.</p>}
-                </div>
-                {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
-                <Button primary='true' disabled={!enteredEmailIsValid}>비밀번호 재설정</Button>
-            </Form>
-        </Card >
+        <>
+            <Logo />
+            <Card>
+                <h1>Reset password</h1>
+                <Form onSubmit={formSubmissionHandler}>
+                    <div className={emailInputClasses}>
+                        <Input
+                            type='email'
+                            onChange={emailInputChangeHandler}
+                            onBlur={emailBlurHandler}
+                            value={enteredEmail}
+                            placeholder='email'
+                        />
+                        {emailInputHasError && <p className='error-text'>이메일이 올바르지 않습니다.</p>}
+                    </div>
+                    {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
+                    <Button primary='true' disabled={!enteredEmailIsValid}>비밀번호 재설정</Button>
+                </Form>
+            </Card >
+        </>
     );
 }
 

@@ -7,6 +7,7 @@ import { isEmail, isPassword } from '../../../pages/Auth';
 
 import useInput from '../../../hooks/use-input';
 
+import Logo from '../../common/Logo';
 import Card from '../../common/Card';
 import Form from '../../common/Form';
 import Input from '../../common/Input';
@@ -71,35 +72,38 @@ const Signup = () => {
     const pwInputClasses = pwInputHasError ? 'invalid' : undefined;
 
     return (
-        <Card>
-            <h1>Join us!</h1>
-            <Form onSubmit={formSubmissionHandler}>
-                <div className={emailInputClasses}>
-                    <Input
-                        type='email'
-                        onChange={emailInputChangeHandler}
-                        onBlur={emailBlurHandler}
-                        value={enteredEmail}
-                        placeholder='email'
-                    />
-                    {emailInputHasError && <p className='error-text'>이메일이 올바르지 않습니다.</p>}
-                </div>
-                <div className={pwInputClasses}>
-                    <Input
-                        type='password'
-                        onChange={pwInputChangeHandler}
-                        onBlur={pwBlurHandler}
-                        value={enteredPw}
-                        placeholder='password'
-                        autoComplete='off'
-                    />
-                    {pwInputHasError && <p className='error-text'>비밀번호는 8자 이상 입력해 주세요.</p>}
-                </div>
-                {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
-                <Button primary='true' disabled={!formIsValid}>회원가입</Button>
-                <Link to='../signin'><Button>로그인하러 가기</Button></Link>
-            </Form>
-        </Card >
+        <>
+            <Logo />
+            <Card>
+                <h1>Join us!</h1>
+                <Form onSubmit={formSubmissionHandler}>
+                    <div className={emailInputClasses}>
+                        <Input
+                            type='email'
+                            onChange={emailInputChangeHandler}
+                            onBlur={emailBlurHandler}
+                            value={enteredEmail}
+                            placeholder='email'
+                        />
+                        {emailInputHasError && <p className='error-text'>이메일이 올바르지 않습니다.</p>}
+                    </div>
+                    <div className={pwInputClasses}>
+                        <Input
+                            type='password'
+                            onChange={pwInputChangeHandler}
+                            onBlur={pwBlurHandler}
+                            value={enteredPw}
+                            placeholder='password'
+                            autoComplete='off'
+                        />
+                        {pwInputHasError && <p className='error-text'>비밀번호는 8자 이상 입력해 주세요.</p>}
+                    </div>
+                    {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
+                    <Button primary='true' disabled={!formIsValid}>회원가입</Button>
+                    <Link to='../signin'><Button>로그인하러 가기</Button></Link>
+                </Form>
+            </Card >
+        </>
     );
 }
 
