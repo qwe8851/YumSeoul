@@ -5,9 +5,9 @@ import ErrorPage from './pages/Error';
 import HomePage, { loader as storesLoader } from './pages/Home';
 import MainPage from './pages/Main';
 import AuthPage from './pages/Auth';
-import Signup from './components/layout/auth/Signup';
-import Signin from './components/layout/auth/Signin';
-import ResetPassword from './components/layout/auth/ResetPassword';
+import Signup from './components/layout/Auth/Signup';
+import Signin from './components/layout/Auth/Signin';
+import ResetPassword from './components/layout/Auth/ResetPassword';
 import StoreMain from './components/layout/store/StoreMain';
 import StoreDetail from './components/layout/store/StoreDetail';
 
@@ -20,7 +20,8 @@ function App() {
       element: <RootPage />,
       errorElement: <ErrorPage />,
       children: [
-        { path: '/', 
+        {
+          path: '/',
           element: <HomePage />,
           children: [
             { index: true, element: <MainPage /> },

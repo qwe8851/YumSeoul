@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSection = styled.section`
-    margin-top: var(--height-header)
+    margin-top: var(--height-header);
 `;
 
 const Section = (props) => {

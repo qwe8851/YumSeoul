@@ -55,13 +55,16 @@ export const loader = async () => {
         const loadedStore = [];
         for (const key in data) {
             if (data.hasOwnProperty(key)) {
-                const review = Array.isArray(data[key].review) ? data[key].review.length : 0;
                 loadedStore.push({
                     id: key,
                     store: data[key].store,
                     store_image: data[key].store_image,
                     store_description: data[key].store_description,
-                    review: review,
+                    store_category: data[key].store_category,
+                    store_follow: data[key].store_follow,
+                    store_follower: data[key].store_follow,
+                    menu: data[key].menu,
+                    review: data[key].review,
                 });
             }
         }

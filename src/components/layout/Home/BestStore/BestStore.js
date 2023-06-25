@@ -30,12 +30,12 @@ const BestStore = ({ storesData }) => {
 
     useEffect(() => {
         const fetchRandomStore = async () => {
-            const loadedStore = [...storesData]; // storesData 배열을 복사하여 새로운 배열 생성
+            const stores = [...storesData]; // storesData 배열을 복사하여 새로운 배열 생성
 
             // review 개수를 기준으로 내림차순 정렬 후 상위 3개의 항목 선택
-            const sortedStores = loadedStore.sort((a, b) => b.review - a.review);
-            const top3Stores = sortedStores.slice(0, 3);
-            setTop3Stores(top3Stores);
+            const review = Array.isArray(stores.review) ? stores.review.length : 0;
+            const sortedStores = stores.sort((a, b) => b.review - a.review);
+            setTop3Stores(sortedStores.slice(0, 3));
         };
 
         fetchRandomStore().catch((error) => {

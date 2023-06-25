@@ -13,26 +13,9 @@ const StyledCard = styled.div`
     box-shadow: 0 2px 6px #b3b5af;
 `;
 
-const StyledLogo = styled.h1`
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 40px;
-    font-size: 75px;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -11px;
-    text-decoration: none;
-    cursor: pointer;
-`;
-
 const Card = (props) => {
     return (
         <>
-            <Link to='/'>
-                <StyledLogo>YumSeoul</StyledLogo>
-            </Link>
             <StyledCard width={props.width}>
                 {props.children}
             </StyledCard>
