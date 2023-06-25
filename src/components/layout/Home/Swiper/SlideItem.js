@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
     
     & h1 {
         width: 100%;
-        font-family: hanna Pro;
+        font-family: 'hanna Pro';
         font-size: 3.125rem;
         line-height: 50px;
         margin: 0;
@@ -27,7 +27,7 @@ const StyledDiv = styled.div`
     
     & p {
         width: 100%;
-        font-family: hanna Air;
+        font-family: 'hanna Air';
         font-size: 1.25rem;
     }
 }`;

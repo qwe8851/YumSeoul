@@ -2,7 +2,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import RootPage from './pages/Root';
 import ErrorPage from './pages/Error';
-import HomePage, { loader as storesLoader } from './pages/Home';
+import HomePage
+// , { loader as storesLoader } 
+from './pages/Home';
 import MainPage from './pages/Main';
 import AuthPage from './pages/Auth';
 import Signup from './components/layout/Auth/Signup';
@@ -27,7 +29,8 @@ function App() {
             { index: true, element: <MainPage /> },
             { path: 'store', element: <StoreMain /> },
             { path: 'store/:storeId', element: <StoreDetail /> },
-          ], loader: storesLoader
+          ]
+          // , loader: storesLoader
         },
         {
           path: '/auth',

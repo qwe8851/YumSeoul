@@ -15,7 +15,7 @@
 }
 
 .flex-item h1 {
-    font-family: hanna Pro;
+    font-family: 'hanna Pro';
 }
 
 /* 큰 화면일때는 ranking 1을 중앙으로 만들기 위해 order를 2로 바꿈 */
@@ -38,7 +38,7 @@
 }
 
 .flex-item .store-ranking {
-    font-family: hanna Pro;
+    font-family: 'hanna Pro';
     font-size: 3rem;
 }
 

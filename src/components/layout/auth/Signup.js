@@ -74,7 +74,7 @@ const Signup = () => {
     return (
         <>
             <Logo />
-            <Card>
+            <Card width='30rem'>
                 <h1>Join us!</h1>
                 <Form onSubmit={formSubmissionHandler}>
                     <div className={emailInputClasses}>
