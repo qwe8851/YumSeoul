@@ -1,31 +1,36 @@
 require('dotenv').config();
 
+// DEPENDENCIES
 const express = require('express');
-const app = express();
 const path = require('path'); 
 const cors = require('cors');
+
+const app = express();
 const port = process.env.PORT || 3001;
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
-
-// ajax 소통을 위한 `npm install cors`
+// Cors for Ajax
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'yum-seoul-project/build')));
 
-// mongoDB connection
+app.listen(port, () => console.log(`Server listening on port ${port}`));
+
+// Connection to MongoDB 
 require('./config/mongo-db');
 
-
-
-
-
-
+// ROUTERS
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'yum-seoul-project/build/index.html'));
 });
 
-// react router 사용을 위한 (제일 아래 위치)
+app.use('/todos', require('./routes/todos'));
+app.use('/users', require('./routes/users'));
+
+
+
+
+
+// use react router (제일 하단 위치)
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'yum-seoul-project/build/index.html'));
 });
