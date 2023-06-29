@@ -5,12 +5,14 @@
 /.pnp
 .pnp.js
 test.json
+yum-seoul-project/node_modules
 
 # testing
 /coverage
 
 # production
 /build
+yum-seoul-project/build
 
 # misc
 .DS_Store
