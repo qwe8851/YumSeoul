@@ -17,17 +17,22 @@ router.get('/', (req, res) => {
 //         .catch(err => res.status(500).send(err));
 // });
 
-router.post('/register', (req, res) => {
-    const user = new User(req.body); // 상단에서 require로 가져온 User 스키마에 req.body를 담아 user라는 인스턴스로 만든다.
+router.post('/register', async (req, res) => {
+    try {
+        // 상단에서 require로 가져온 User 스키마에 req.body를 담아 user라는 인스턴스로 만든다.
+        const user = new User(req.body);
+        const userInfo = await user.save();
 
-    user.save((err, userInfo) => {
-        if (err) return res.json({ success: false, err }); // err일 경우 return 값
         return res.status(200).json({
-            //status가 200일 경우 return 값
             success: true,
-            userInfo,
+            userInfo
         });
-    });
+    } catch (error) {
+        return res.json({
+            success: false,
+            error
+        });
+    }
 });
 
 module.exports = router;
