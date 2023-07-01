@@ -10,13 +10,6 @@ router.get('/', (req, res) => {
         .catch(err => res.status(500).send(err));
 });
 
-// Create new user document
-// router.post('/register', (req, res) => {
-//     User.create(req.body)
-//         .then(user => res.send("user"))
-//         .catch(err => res.status(500).send(err));
-// });
-
 router.post('/register', async (req, res) => {
     try {
         // 상단에서 require로 가져온 User 스키마에 req.body를 담아 user라는 인스턴스로 만든다.
@@ -30,7 +23,7 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         return res.json({
             success: false,
-            error
+            error: error.message
         });
     }
 });

@@ -1,27 +1,33 @@
 const mongoose = require('mongoose');
 
-// Define Schemes
 const todoSchema = new mongoose.Schema({
-    todoid: { type: Number, required: true, unique: true },
-    content: { type: String, required: true },
-    completed: { type: String, default: false }
+    todoid: { 
+        type: Number, 
+        required: true, 
+        unique: true 
+    },
+    content: { 
+        type: String, 
+        required: true 
+    },
+    completed: { 
+        type: String, 
+        default: false 
+    }
 },
-    {
-        timestamps: true
-    });
+{
+    timestamps: true
+});
 
 // Create new todo document
 todoSchema.statics.create = function (payload) {
-    // this === Model
     const todo = new this(payload);
-    // return Promise
+
     return todo.save();
 };
 
 // Find All
 todoSchema.statics.findAll = function () {
-    // return promise
-    // V4부터 exec() 필요없음
     return this.find({});
 };
 

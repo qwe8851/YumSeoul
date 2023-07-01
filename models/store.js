@@ -7,8 +7,8 @@ const storeSchema = mongoose.Schema({
         trim: true,
     },
     storeImage: {
-        type: String,
-        maxLength: 30,
+        data: Buffer,
+        contentType: String,
     },
     storeDescription: {
         type: String,
