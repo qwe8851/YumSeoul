@@ -20,7 +20,7 @@ require('./config/mongo-db');
 app.use('/todos', require('./routes/todos'));
 app.use('/users', require('./routes/users'));
 app.use('/stores', require('./routes/stores'));
-app.use('/uploadfile', require('./routes/uploads'));
+app.use('/uploads', require('./routes/uploads'));
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
 

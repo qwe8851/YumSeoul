@@ -68,11 +68,11 @@ router.put('/storeid/:storeid', (req, res) => {
     const storeId = req.params.storeid;
     const updateData = req.body;
 
-    Store.findByIdAndUpdate(storeId, updateData, {new : true})
+    Store.findByIdAndUpdate(storeId, updateData, { new: true })
         .then((store) => {
-            if(!store) {
+            if (!store) {
                 return res.status(404).json({
-                    success : false,
+                    success: false,
                     error: 'Store not found'
                 });
             }
@@ -82,7 +82,7 @@ router.put('/storeid/:storeid', (req, res) => {
                 store: store
             });
         })
-        .catch((error)=>{
+        .catch((error) => {
             res.status(500).json({
                 success: false,
                 error: error.message
