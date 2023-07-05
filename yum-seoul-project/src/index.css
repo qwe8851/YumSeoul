@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #242424;
+  background-color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --color-gray-100: #f4f3f1;
+  --color-gray-200: #dddbd8;
+  --color-gray-300: #ccc9c6;
+  --color-gray-400: #aeaba7;
+  --color-gray-500: #8a8784;
+  --color-gray-600: #656360;
+  --color-gray-700: #4b4a47;
+  --color-gray-800: #31302e;
+  --color-gray-900: #1f1d1b;
+
+  --color-neon-100: #ccffc2;
+  --color-neon-200: #b0ffa0;
+  --color-neon-300: #94ff7e;
+  --color-neon-400: #3fff18;
+  --color-neon-500: #21c200;
+
+  --color-blue-100: #f7fafd;
+  --color-blue-200: #eaf2f9;
+  --color-blue-300: #cfe1f2;
+  --color-blue-400: #a6c8e8;
+  --color-blue-500: #8bb7e1;
+  --color-blue-600: #629ed7;
+  --color-blue-700: #3a85cc;
+  --color-blue-800: #2b6ba8;
+  --color-blue-900: #1a4064;
+  --color-blue-dark: #0f263c;
+
+  --color-green-200: #eaf2f9;
+  
+  --color-orange-100: #fff4ea;
+  --color-orange-200: #ffead9;
+  --color-orange-300: #fed8b8;
+  --color-orange-400: #fec596;
+  --color-orange-500: #fdb275;
+  --color-orange-600: #fda053;
+  --color-orange-700: #fc8d32;
+  --color-orange-800: #e76a03;
+  --color-orange-900: #d66203;
+  
+  --color-red-100: #ffefed;
+  --color-red-200: #ffdfdc;
+  --color-red-300: #ffc0ba;
+  --color-red-400: #ff9287;
+  --color-red-500: #ff6454;
+  --color-red-600: #ff3521;
+  --color-red-700: #dc1400;
+  --color-red-800: #a90f00;
+  --color-red-900: #650900;
+
+  --color-purple-100: #efeaff;
+  --color-purple-200: #A593E0;
+  --color-light-gray: #E0E3DA;
+  --color-beige: #FFFFF3;
+  --color-dark-blue: #566270;
+
+  --height-header-event: 26px;
+  --height-header-nav: 50px;
+  --height-header: 76px;
+  --height-footer: 275px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
+}
+
+#root {
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+ul {
+  padding: 0;
+}
+
+main {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  /* gap: 15rem */
+}
+
+section {
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+}
+
+section .main-title h1 {
+  font-family: 'hanna Pro';
+  color: var(--color-blue-dark);
+}
+
+section .main-title p {
+  font-family: 'hanna Air';
+}
+
+input {
+  outline: none;
+}
+
+.invalid input {
+  border: 1px solid var(--color-red-300);
+  background-color: var(--color-red-100);
+}
+
+.invalid input:focus,
+.invalid input:active {
+  border: 1px solid var(--color-red-400);
+}
+
+.error-text {
+  color: var(--color-red-600);
+  margin: 0;
+  font-size: small;
+}
