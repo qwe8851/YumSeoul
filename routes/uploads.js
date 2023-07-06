@@ -5,7 +5,7 @@ router.post('/', upload.single('image'), async (req, res, next) => {
     try {
         return res.status(200).json({
             success: true,
-            imagePath: req.file,
+            imagePath: req.file.location,
         });
     } catch (error) {
         next(error);

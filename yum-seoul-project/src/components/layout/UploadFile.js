@@ -8,19 +8,20 @@ const UploadFile = () => {
         formData.append('image', event.target.files[0]);
 
         try {
-            const result = await fetch('http://localhost:5000/uploads', {
+            const response = await fetch('http://localhost:5000/uploads', {
                 method: 'POST',
-                body: formData,
+                body: formData
             });
 
-            if (result.ok) {
-                const res = await result.json();
-                console.log(res);
-            } else {
-                console.log(result.status);
-            }
+            const result = await response.json();
+            console.log(result);
+
+            if (!result.success) throw new Error();
+
+            alert('이미지 파일이 업로드 되었어요!');
         } catch (error) {
-            console.log('error: ', error);
+            alert('이미지 파일 업로드에 실패했어요!');
+            console.log(error);
         }
     };
 
