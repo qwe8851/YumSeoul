@@ -20,7 +20,7 @@ const upload = multer({
         bucket: process.env.BUCKET_NAME,
         // acl: 'public-read',
         key: function (req, file, cb) {
-            cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
+            cb(null, `yumseoul/store/${Date.now()}${path.basename(file.originalname)}`);
         },
         contentType: multerS3.AUTO_CONTENT_TYPE, // Content-Type을 자동으로 감지하도록 설정
     }),
