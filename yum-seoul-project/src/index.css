@@ -144,3 +144,9 @@ input {
   margin: 0;
   font-size: small;
 }
+
+.success-text {
+  color: var(--color-blue-600);
+  margin: 0;
+  font-size: small;
+}

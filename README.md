@@ -16,6 +16,9 @@
 2. 이미지 url을 클라이언트로 응답 
 3. 클라이언트에서 경로와 함께 다른 텍스트 정보들을 서버에 전달
 4. 서버에서 db에 정보를 저장
+
+crypto로 비밀번호 재설정을 위한 인증코드 생성
+nodemailer로 비밀번호 재설정을 위한 stmp 전송 구현 
 <br /><br /><br />
 
 ### 사용 기술스택
@@ -29,5 +32,6 @@
 <br/> `multer-s3`, `bucket` : aws-s3에 이미지 저장
 <br/> `jsonwebtoken` : 로그인 토큰
 <br/> `bcrypt` : 비밀번호 암호화
+<br/> `nodemailer` : stmp 전송
 
 <br /><br /><br />

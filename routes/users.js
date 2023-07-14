@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         .catch((err) => res.status(500).send(err));
 });
 
+// 회원가입
 router.post('/signup', async (req, res) => {
     try {
         const reqInfo = req.body;
@@ -32,6 +33,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// 로그인
 router.post('/signin', async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -83,6 +85,49 @@ router.post('/signin', async (req, res) => {
             success: false,
             error: error.message
         });
+    }
+});
+
+// 인증코드 메일 전송
+router.post('/reset-code', async (req, res) => {
+    try {
+        const {email} = req.body;
+
+        // 사용자 조회
+        const user = await User.findOne({email});
+        if(!user) {
+            return res.status(404).json({
+                success: false,
+                error: 'User not found'
+            });
+        }
+
+        // 임시 인증코드 생성 및 저장
+        const resetCode = user.generateResetCode();
+        await user.save();
+
+        // 비밀번호 재설정 이메일 발송
+        user.sendResetPasswordEmail(user.email, resetCode);
+
+        return res.status(200).json({
+            success: true,
+            message: 'Password reset email has been sent'
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });
+    }
+});
+
+
+// 패스워드 재설정
+router.post('/reset-password', async (req, res) => {
+    try {
+        // const {email, resetCode, newP}
+    } catch (error) {
+        
     }
 });
 
