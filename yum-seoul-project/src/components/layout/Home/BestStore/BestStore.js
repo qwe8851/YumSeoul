@@ -20,7 +20,8 @@ const StyledDiv = styled.div`
     background-position: center;
     background-size: cover;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)), url(${({ image }) => image || 'none'});
+        rgba(0, 0, 0, 0.3)), ${props => `url(${props.$image})` || 'none'};
+
 `;
 
 const BestStore = ({ storesData }) => {
@@ -48,7 +49,7 @@ const BestStore = ({ storesData }) => {
         <div className={classes['flex-box']}>
             {top3Stores.map((item, idx) => (
                 <div key={item.id} className={classes['flex-item']}>
-                    <StyledDiv image={item.store_image} >   {/* TODO: 상세페이지로 이동 구현*/}
+                    <StyledDiv $image={item.store_image} >   {/* TODO: 상세페이지로 이동 구현*/}
                         <h1 className={classes['store-ranking']} style={{ margin: 0 }}>{idx + 1}</h1>
                         <h1>{item.store}</h1>
                         <p>{item.store_description}</p>

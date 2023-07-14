@@ -11,7 +11,7 @@ const StyledButton = styled.button`
     color: black;
     font-weight: normal;
 
-    ${props => props.primary && css`
+    ${props => props.$primary && css`
         border-color: var(--color-blue-500);
         background-color: var(--color-blue-700);
         color: white;
@@ -21,7 +21,7 @@ const StyledButton = styled.button`
     &:hover,
     &:active {
         background-color: 
-        ${props => props.primary
+        ${props => props.$primary
             ? 'var(--color-blue-800)'
             : 'var(--color-gray-100)'
     };
@@ -39,7 +39,7 @@ const StyledButton = styled.button`
 
 const Button = ({primary, ...props}) => {
     return (
-        <StyledButton primary={primary} {...props}>
+        <StyledButton $primary={primary} {...props}>
             {props.children}
         </StyledButton>
     );

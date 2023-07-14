@@ -21,7 +21,7 @@ const StyledCard = styled.div`
     `}
 
     & .card-image {
-        background-image: url(${props => props.image || 'none'});
+        background-image: url(${props => props.$image || 'none'});
         background-size: 100%;
         background-position: center;
         width: 100%;
@@ -60,13 +60,6 @@ const StyledCard = styled.div`
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
-
-    & hr {
-        width: 100%;
-        height: 1px;
-        border: 0;  
-        background: var(--color-light-gray);
-    }
 `;
 
 const Card = (props) => {
@@ -74,7 +67,7 @@ const Card = (props) => {
 
     const storeLayout = (
         //  TODO: width 빼기
-        <StyledCard width={props.width} image={props.image} onClick={() => navigate(`${props.id}`)}>
+        <StyledCard width={props.width} $image={props.image} onClick={() => navigate(`${props.id}`)}>
             <div className='card-image'></div>
             <div className='card-title'>
                 <h1>{props.store}</h1>
@@ -84,7 +77,7 @@ const Card = (props) => {
     );
 
     const CardLayout = (
-        <StyledCard width={props.width} image={props.image}>
+        <StyledCard width={props.width} $image={props.image}>
             {props.children}
         </StyledCard>
     );
