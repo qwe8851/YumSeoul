@@ -12,7 +12,7 @@ import ResetPassword from './components/layout/Auth/ResetPassword';
 import StoreMain from './components/layout/store/StoreMain';
 import StoreDetail, { loader as storeDetailLoader } from './components/layout/store/StoreDetail';
 
-import UploadFile from './components/layout/UploadFile';
+import MainContentUpload from './components/layout/MainContentUpload';
 
 import './App.css';
 
@@ -30,7 +30,7 @@ function App() {
             { index: true, element: <MainPage /> },
             { path: 'store', element: <StoreMain /> },
             { path: 'store/:storeId', element: <StoreDetail />, loader: storeDetailLoader },
-            { path: 'upload', element: <UploadFile /> }
+            { path: 'upload/main', element: <MainContentUpload /> }
           ]
         },
         {

@@ -19,6 +19,7 @@ require('./config/mongo-db');
 // ROUTERS
 app.use('/todos', require('./routes/todos'));
 app.use('/users', require('./routes/users'));
+app.use('/main', require('./routes/main'));
 app.use('/stores', require('./routes/stores'));
 app.use('/uploads', require('./routes/uploads'));
 

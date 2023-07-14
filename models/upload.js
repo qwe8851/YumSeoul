@@ -18,13 +18,16 @@ const upload = multer({
     storage: multerS3({
         s3: s3Client,
         bucket: process.env.BUCKET_NAME,
-        // acl: 'public-read',
-        key: function (req, file, cb) {
-            cb(null, `yumseoul/store/${Date.now()}${path.basename(file.originalname)}`);
+        // acl: 'public-read-write',
+        key: (req, file, callback) => {
+            const uploadDirectory = req.query.directory ?? '';
+
+            callback(null, `${uploadDirectory}/${Date.now()}_${file.originalname}`);
         },
         contentType: multerS3.AUTO_CONTENT_TYPE, // Content-Type을 자동으로 감지하도록 설정
     }),
     limits: { fileSize: 5 * 1024 * 1024 },
 });
+
 
 module.exports = upload;

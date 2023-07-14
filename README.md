@@ -1,8 +1,9 @@
 # YumSeoul
 
-cd yum-seoul-project
-npm run build
-nodemon servers.js (node servers.js)
+build 방법
+1. `cd yum-seoul-project`
+2. `npm run build`
+3. `nodemon servers.js (node servers.js)`
 
 비밀번호 암호화 bcrypt
 - 단방향 해시 함수로 암호화만 가능, 로그인 시 사용자가 입력한 비밀번호를 bcrypt.compare()함수를 사용해서 암호화한 후 db의 저장된 비번과 비교해 일치여부 확인
