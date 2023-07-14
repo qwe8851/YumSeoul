@@ -67,6 +67,7 @@ const Signup = () => {
                     </div>
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!enteredEmailIsValid}>비밀번호 재설정</Button>
+                    <hr />
                     <Link to='/auth/signin'><Button>로그인하러 가기</Button></Link>
                 </Form>
             </Card >

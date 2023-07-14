@@ -60,6 +60,14 @@ const StyledCard = styled.div`
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
     }
+
+    & hr {
+        width: 100%;
+        height: 1px;
+        border: none;
+        background-color: var(--color-light-gray);
+    }
+    
 `;
 
 const Card = (props) => {

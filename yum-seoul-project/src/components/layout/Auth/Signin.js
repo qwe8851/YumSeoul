@@ -112,12 +112,12 @@ const Signin = () => {
                             autoComplete='off'
                         />
                         {pwInputHasError && <p className='error-text'>비밀번호는 8자 이상 입력해 주세요.</p>}
-                    </div>
+                </div>
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!formIsValid}>로그인</Button>
-                    <Link to='/auth/signup'><Button>회원가입</Button></Link>
                     <hr/>
                     <Link to='/auth/resetpassword'><Button>비밀번호 재설정</Button></Link>
+                    <Link to='/auth/signup'><Button>회원가입</Button></Link>
                 </Form>
             </Card >
         </>
