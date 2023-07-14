@@ -148,7 +148,7 @@ const Signup = () => {
                     </div>
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!formIsValid}>회원가입</Button>
-                    <Link to='auth/signin'><Button>로그인하러 가기</Button></Link>
+                    <Link to='/auth/signin'><Button>로그인하러 가기</Button></Link>
                 </Form>
             </Card >
         </>

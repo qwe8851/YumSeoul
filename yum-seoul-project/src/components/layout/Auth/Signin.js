@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { setAuthToken } from '../../../store/authSlice';
 
-import { authService } from '../../../utils/firebaseAuth';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { isEmail, isPassword } from '../../../pages/Auth';
 
 import useInput from '../../../hooks/use-input';
@@ -117,8 +115,9 @@ const Signin = () => {
                     </div>
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!formIsValid}>로그인</Button>
-                    <Link to='/auth/resetpassword'><Button>비밀번호 재설정</Button></Link>
                     <Link to='/auth/signup'><Button>회원가입</Button></Link>
+                    <hr/>
+                    <Link to='/auth/resetpassword'><Button>비밀번호 재설정</Button></Link>
                 </Form>
             </Card >
         </>

@@ -11,18 +11,15 @@ const SwiperContent = () => {
 
     useEffect(() => {
         const fetchImageData = async () => {
-            const response = await fetch('https://yum-seoul-default-rtdb.firebaseio.com/image/main.json');
+            const response = await fetch('http://localhost:5000/main');
             const data = await response.json();
 
-            const loadedMeals = [];
-            for (const key in data) {
-                loadedMeals.push({
-                    id: key,
-                    imageUrl: data[key].imageUrl,
-                    title: data[key].title,
-                    description: data[key].description,
-                });
-            }
+            const loadedMeals = data.main.map(item => ({
+                id: item._id,
+                title: item.mainTitle,
+                description: item.mainDescription,
+                imageUrl: item.menuImage,
+            }));
 
             setImageData(loadedMeals);
         };

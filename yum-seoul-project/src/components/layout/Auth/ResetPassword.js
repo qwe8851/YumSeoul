@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { authService } from '../../../utils/firebaseAuth';
 import { sendPasswordResetEmail } from 'firebase/auth';
@@ -52,7 +52,7 @@ const Signup = () => {
     return (
         <>
             <Logo />
-            <Card>
+            <Card width='30rem'>
                 <h1>Reset password</h1>
                 <Form onSubmit={formSubmissionHandler}>
                     <div className={emailInputClasses}>
@@ -67,6 +67,7 @@ const Signup = () => {
                     </div>
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!enteredEmailIsValid}>비밀번호 재설정</Button>
+                    <Link to='/auth/signin'><Button>로그인하러 가기</Button></Link>
                 </Form>
             </Card >
         </>
