@@ -116,7 +116,7 @@ const Signin = () => {
                     {isSubmitSuccess && <p className='error-text'>{errorMessage}</p>}
                     <Button primary='true' disabled={!formIsValid}>로그인</Button>
                     <hr/>
-                    <Link to='/auth/resetpassword'><Button>비밀번호 재설정</Button></Link>
+                    <Link to='/auth/resetcode'><Button>비밀번호 재설정</Button></Link>
                     <Link to='/auth/signup'><Button>회원가입</Button></Link>
                 </Form>
             </Card >

@@ -1,69 +1,23 @@
 import { useEffect } from 'react';
-import { Outlet, json, useLoaderData } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { setStoresData } from '../store/storeSlice';
+import { setStoresData } from '../store/storesSlice';
 
 import Navigation from '../components/layout/Navigation/Navigation';
 import Footer from '../components/layout/Home/Footer/Footer';
 
-import styled from 'styled-components';
-import { useState } from 'react';
-
-const StyledHeader = styled.header`
-    position: fixed;
-    height: var(--height-header);
-    z-index: 99;
-    
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-`;
-
-const StyledLoading = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: larger;
-    font-family: 'hanna Pro';
-    background-color: var(--color-gray-100);
-
-    & p {
-        font-family: 'hanna Air';
-        font-size: medium;
-        font-weight: 500;
-    };
-`;
-
-const StyledMain = styled.main`
-    min-height: 100%;
-    padding-bottom: var(--height-footer);
-    `;
-    
-    const StyledFooter = styled.footer`
-    transform: translateY(-100%);
-`;
+import * as S from '../styles/Layout.styled';
 
 const HomePage = () => {
     const dispatch = useDispatch();
-    const [loading, setLoading] = useState(true);
-    const [loadMessage, setLoadMessage] = useState('맛집 정보를 불러오는 중이에요😀');
 
     useEffect(() => {
-        const loadingTimer = setTimeout(() => {
-            setLoadMessage('조금만 기다려주세요😍');
-        }, 3000);
-
         const fetchData = async () => {
             const response = await fetch('https://yum-seoul-default-rtdb.firebaseio.com/store.json');
 
             if (!response.ok) {
-                clearTimeout(loadingTimer); // 타이머 중지
-                setLoading(false);
-                return;
+                return alert("오류");
             }
 
             const data = await response.json();
@@ -86,34 +40,23 @@ const HomePage = () => {
                 }
             }
             
-            clearTimeout(loadingTimer); // 타이머 중지
-            setLoading(false);
             dispatch(setStoresData(loadedStore || []));
         };
         
         fetchData();
     }, [dispatch]);
 
-    if (loading) {
-        return (
-            <StyledLoading>
-                <h3>Loading...</h3>
-                <p>{loadMessage}</p>
-            </StyledLoading>
-        ); 
-    }
-
     return (
         <>
-            <StyledHeader>
+            <S.Header>
                 <Navigation />
-            </StyledHeader>
-            <StyledMain>
+            </S.Header>
+            <S.Main>
                 <Outlet />
-            </StyledMain>
-            <StyledFooter>
+            </S.Main>
+            <S.Footer>
                 <Footer />
-            </StyledFooter>
+            </S.Footer>
         </>
     );
 };

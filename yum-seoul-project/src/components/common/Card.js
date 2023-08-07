@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import styled, { css } from 'styled-components';
 
@@ -71,11 +70,9 @@ const StyledCard = styled.div`
 `;
 
 const Card = (props) => {
-    const navigate = useNavigate();
-
     const storeLayout = (
         //  TODO: width 빼기
-        <StyledCard width={props.width} $image={props.image} onClick={() => navigate(`${props.id}`)}>
+        <StyledCard width={props.width} $image={props.image} onClick={props.onClick}>
             <div className='card-image'></div>
             <div className='card-title'>
                 <h1>{props.store}</h1>

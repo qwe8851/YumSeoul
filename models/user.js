@@ -61,7 +61,7 @@ userSchema.pre('save', function (next) {
 userSchema.methods.generateResetCode = function () {
     const resetCode = crypto.randomBytes(20).toString("hex");
     this.resetCode = resetCode;
-    this.resetCodeExpires = Date.now() + 3600000;   // 1시간 후에 인증 코드 만료
+    this.resetCodeExpires = Date.now() + 3600000; // 1시간 후에 인증 코드 만료
     return resetCode;
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import SlideItem from './SlideItem';
 
@@ -9,31 +9,34 @@ const SwiperContent = () => {
     const [swiperCurrentPosition, setSwiperCurrentPosition] = useState(0); // swiper 현재 위치 상태값
     const [imageData, setImageData] = useState([]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const fetchImageData = async () => {
-            const response = await fetch('http://localhost:5000/main');
+            const response = await fetch('http://localhost:5000/mains');
             const data = await response.json();
 
-            const loadedMeals = data.main.map(item => ({
+            const loadedMainData = data.main.map(item => ({
                 id: item._id,
                 title: item.mainTitle,
                 description: item.mainDescription,
                 imageUrl: item.menuImage,
             }));
 
-            setImageData(loadedMeals);
-        };
-
-        fetchImageData();
-    }, []);
-
-    useEffect(()=>{
-        if (swiperRef.current) {
-            swiperRef.current.style.width =
-                imageData ? `${imageData.length}00vw` : '0';
+            return loadedMainData;
         }
-    }, [imageData]);
 
+        fetchImageData()
+            .then((loadedMainData) => {
+                if (swiperRef.current) {
+                    swiperRef.current.style.width =
+                        loadedMainData ? `${loadedMainData.length}00vw` : '0';
+                }
+
+                setImageData(loadedMainData);
+            }).catch((error) => {
+                console.log("error : ", error.message);
+            });
+    }, []);
+    
     useEffect(() => {
         if (!imageData) return;
 

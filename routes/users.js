@@ -91,11 +91,11 @@ router.post('/signin', async (req, res) => {
 // 인증코드 메일 전송
 router.post('/reset-code', async (req, res) => {
     try {
-        const {email} = req.body;
+        const { email } = req.body;
 
         // 사용자 조회
-        const user = await User.findOne({email});
-        if(!user) {
+        const user = await User.findOne({ email });
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 error: 'User not found'
@@ -107,7 +107,7 @@ router.post('/reset-code', async (req, res) => {
         await user.save();
 
         // 비밀번호 재설정 이메일 발송
-        user.sendResetPasswordEmail(user.email, resetCode);
+        user.sendResetPasswordEmail(email, resetCode);
 
         return res.status(200).json({
             success: true,
@@ -121,13 +121,55 @@ router.post('/reset-code', async (req, res) => {
     }
 });
 
-
 // 패스워드 재설정
 router.post('/reset-password', async (req, res) => {
     try {
-        // const {email, resetCode, newP}
+        const {email, resetCode, newPassword} = req.body;
+
+        // 사용자 조회
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                error: 'User not found'
+            });
+        }
+
+        // 리셋 코드 검증
+        if (user.resetCode !== resetCode.trim()) {
+            return res.status(401).json({
+                success: false,
+                error: 'Invalid reset code' + user.resetCode
+            });
+        }
+
+        // 리셋 코드 유효성 검사
+        if (user.resetCodeExpires < Date.now()) {
+            return res.status(401).json({
+                success: false,
+                error: 'Reset code expired'
+            });
+        }
+
+        // 새로운 비밀번호 암호화
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // 비밀번호 업데이트
+        user.password = hashedPassword;
+        user.resetCode = '';
+        user.resetCodeExpires = null;
+        await user.save();
+
+        return res.status(200).json({
+            success: true,
+            message: 'Password reset successful'
+        });
+
     } catch (error) {
-        
+        return res.status(500).json({
+            success: false,
+            error: error.message
+        });
     }
 });
 
