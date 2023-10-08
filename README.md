@@ -25,11 +25,11 @@
 <br /> 
 
 **Step 2️⃣ yum-seoul-project의 의존성을 설치해주세요**
-> ``````
+> ```
 > yarn
 > ```
 > or
-> ``````
+> ```
 > npm install
 > ```
 
@@ -42,7 +42,7 @@
 > npm run build
 > ```
 > or
-> ``````
+> ```
 > yarn run build
 > ```
 
