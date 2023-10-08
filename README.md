@@ -26,7 +26,7 @@
 
 **Step 2️⃣ yum-seoul-project의 의존성을 설치해주세요**
 > ```
-> yarn
+> yarn install
 > ```
 > or
 > ```
@@ -39,22 +39,22 @@
 
 **Step 3️⃣ build를 진행해주세요.**
 > ```
-> npm run build
+> yarn run build
 > ```
 > or
 > ```
-> yarn run build
+> npm run build
 > ```
 
 <br />
 
 **Step 3️⃣ node.js 서버를 띄우고 확인해주세요. **
 > ```
-> node servers.js 
+> yarn servers.js 
 > ```
 > or
 > ```
-> yarn start servers.js
+> node start servers.js
 > ```
 > nodemon설치 시에는 `nodemon servers.js`를 입력해주세요 :)
 
